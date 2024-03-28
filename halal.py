@@ -3,9 +3,13 @@ import os
 import time
 import sys
 
+def clear_screen():
+    os.system('clear')  # Membersihkan layar di Termux
+
 def download_file(url, save_path):
     attempt = 1  # Nomor percobaan awal
     while True:
+        clear_screen()  # Membersihkan layar sebelum setiap percobaan
         response = requests.get(url)
         if response.status_code == 200:
             with open(save_path, 'wb') as f:
@@ -21,7 +25,7 @@ def download_file(url, save_path):
 # URL file yang ingin diunduh
 file_url = "https://github.com/antinsp/bonetrojan/archive/refs/heads/main.zip"
 # Path lengkap lokasi penyimpanan file di komputer Anda, termasuk nama file
-save_location = "/root/trojan-go.zip"
+save_location = "/root/file.zip"  # Pastikan save_location adalah file, bukan direktori
 
 # Fungsi utama yang berjalan satu kali saja
 def main():
@@ -30,3 +34,4 @@ def main():
 # Panggil fungsi utama
 if __name__ == "__main__":
     main()
+    
